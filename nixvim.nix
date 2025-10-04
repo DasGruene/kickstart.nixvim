@@ -5,7 +5,7 @@
   ...
 }:
 let
-  enable_nerd_fonts = false;
+  enable_nerd_fonts = true;
 in
 {
   imports = [
@@ -19,6 +19,7 @@ in
     ./config/plugins/kickstart/todo-comments.nix
     ./config/plugins/kickstart/mini.nix
     ./config/plugins/kickstart/treesitter.nix
+    ./config/plugins/custom/autocmd.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -168,7 +169,7 @@ in
     number = true;
     # You can also add relative line numbers, to help with jumping.
     #  Experiment for yourself to see if you like it!
-    # relativenumber = true;
+    relativenumber = true;
 
     # Enable mouse mode, can be useful for resizing splits for example!
     mouse = "a";
