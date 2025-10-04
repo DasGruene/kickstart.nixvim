@@ -4,10 +4,13 @@
   plugins.neo-tree = {
     enable = true;
 
-    filesystem = {
+    extraOptions = {
       window = {
-        mappings = {
-          "\\" = "close_window";
+        position = "right";
+      };
+      filesystem = {
+        filtered_items = {
+          visible = true;
         };
       };
     };
@@ -16,11 +19,13 @@
   # https://nix-community.github.io/nixvim/keymaps/index.html
   keymaps = [
     {
-      key = "\\";
-      action = "<cmd>Neotree reveal<cr>";
+      key = "<leader>e";
+      action = "<cmd>Neotree reveal<CR>";
       options = {
         desc = "NeoTree reveal";
       };
+      noremap = true;
+      silent = true;
     }
   ];
 }
