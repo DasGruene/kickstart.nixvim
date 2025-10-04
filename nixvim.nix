@@ -164,22 +164,6 @@ in
   # NOTE: You can change these options as you wish!
   #  For more options, you can see `:help option-list`
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#opts
-  autoCmd = [
-    {
-      #makes neovim remember last cursor position when reopening files
-      event = [ "BufReadPost" ];
-      pattern = [ "*" ];
-      callback = {
-        __raw = ''
-          function()
-                local last_position = vim.fn.line("'\"")
-                if last_position > 0 and last_position <= vim.fn.line("$") then
-                  vim.cmd("normal! g'\"")
-                end
-              end '';
-      };
-    }
-  ];
   opts = {
     # Show line numbers
     number = true;
