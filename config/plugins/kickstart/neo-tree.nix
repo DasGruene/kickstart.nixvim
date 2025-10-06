@@ -23,9 +23,9 @@
       action = "<cmd>Neotree reveal<CR>";
       options = {
         desc = "NeoTree reveal";
+        noremap = true;
+        silent = true;
       };
-      noremap = true;
-      silent = true;
     }
   ];
 }
