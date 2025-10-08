@@ -14,5 +14,21 @@
                         end '';
       };
     }
+    {
+      # Enable spell check automatically for markdown and text files
+      event = [ "FileType" ];
+      pattern = [
+        "markdown"
+        "text"
+      ];
+      callback = {
+        __raw = ''
+          function()
+            vim.opt_local.spell = true
+            vim.opt_local.spelllang = "en_gb"
+          end
+        '';
+      };
+    }
   ];
 }

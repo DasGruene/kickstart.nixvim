@@ -20,6 +20,7 @@ in
     ./config/plugins/kickstart/mini.nix
     ./config/plugins/kickstart/treesitter.nix
     ./config/plugins/custom/autocmd.nix
+    ./config/plugins/custom/markview.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -223,6 +224,12 @@ in
 
     # See `:help hlsearch`
     hlsearch = true;
+
+    #set deafault tab size
+    tabstop = 4;
+    shiftwidth = 4;
+    expandtab = true;
+
   };
 
   # [[ Basic Keymaps ]]
