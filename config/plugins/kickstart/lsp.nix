@@ -67,13 +67,27 @@
     #  - settings: Override the default settings passed when initializing the server.
     #        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     servers = {
-      clangd.enable = true;
+      clangd = {
+        enable = true;
+        cmd = [
+          "clangd"
+          "--compile-commands-dir=build"
+        ];
+      };
       # gopls = {
       #   enable = true;
       # };
       basedpyright.enable = true;
       bashls.enable = true;
-      elixirls.enable = true;
+      elixirls = {
+        enable = true;
+        settings = {
+          dialyzerEnabled = true;
+          fetchDeps = true;
+          mixEnv = "dev";
+          phoenixFramework = false;
+        };
+      };
       nixd.enable = true;
       pylsp.enable = true;
       # rust_analyzer = {
