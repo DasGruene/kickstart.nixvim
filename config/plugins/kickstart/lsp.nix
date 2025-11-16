@@ -82,11 +82,14 @@
       elixirls = {
         enable = true;
         settings = {
-          dialyzerEnabled = true;
-          fetchDeps = true;
+          dialyzerEnabled = false;
+          fetchDeps = false;
           mixEnv = "dev";
           phoenixFramework = false;
         };
+        cmd = [
+          "elixir-ls"
+        ];
       };
       nixd.enable = true;
       pylsp.enable = true;

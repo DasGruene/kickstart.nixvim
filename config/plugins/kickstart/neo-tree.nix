@@ -4,7 +4,7 @@
   plugins.neo-tree = {
     enable = true;
 
-    extraOptions = {
+    settings = {
       window = {
         position = "right";
       };
