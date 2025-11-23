@@ -15,6 +15,10 @@
       # sway
       tmux
 
+      #my stuff
+      elixir
+      cpp
+
       # Nix, Nixvim
       nix
       query # treesitter queries

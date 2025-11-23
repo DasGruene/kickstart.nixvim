@@ -81,12 +81,6 @@
       bashls.enable = true;
       elixirls = {
         enable = true;
-        settings = {
-          dialyzerEnabled = false;
-          fetchDeps = false;
-          mixEnv = "dev";
-          phoenixFramework = false;
-        };
         cmd = [
           "elixir-ls"
         ];
