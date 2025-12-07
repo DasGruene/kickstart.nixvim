@@ -18,6 +18,7 @@
       #my stuff
       elixir
       cpp
+      zig
 
       # Nix, Nixvim
       nix

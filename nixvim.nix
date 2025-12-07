@@ -391,6 +391,9 @@ in
     guess-indent = {
       enable = true;
     };
+
+    # better text heighlighting for zig
+    zig.enable = true;
   };
 
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraplugins
