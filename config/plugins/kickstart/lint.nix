@@ -11,9 +11,12 @@
         "markdownlint"
         # "vale"
       ];
+      rust = [ "clippy" ];
+      python = [ "pylint" ];
+
       #clojure = ["clj-kondo"];
       #dockerfile = ["hadolint"];
-      #inko = ["inko"];
+      #inko = ["inko"];:
       #janet = ["janet"];
       #json = ["jsonlint"];
       #rst = ["vale"];
