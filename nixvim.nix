@@ -21,6 +21,7 @@ in
     ./config/plugins/kickstart/treesitter.nix
     ./config/plugins/custom/autocmd.nix
     ./config/plugins/custom/markview.nix
+    ./config/plugins/custom/dap.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -352,7 +353,7 @@ in
         source = "if_many";
       };
       underline = {
-        severity.__raw = ''vim.diagnostic.severity.ERROR'';
+        severity.__raw = "vim.diagnostic.severity.ERROR";
       };
       signs.__raw = ''
         vim.g.have_nerd_font and {
