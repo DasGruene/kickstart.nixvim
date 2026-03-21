@@ -47,6 +47,7 @@ dap.adapters.gdb = {
 	command = "@GDB_PATH@", -- placeholder replaced by Nix
 	args = { "-q", "--interpreter=mi2" },
 }
+vim.g.dap_timeout = 10000 -- 10s timeout (milliseconds)
 
 -- Rust configurations using codelldb
 dap.configurations.rust = {
