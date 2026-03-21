@@ -19,16 +19,13 @@ in
     ./config/plugins/kickstart/todo-comments.nix
     ./config/plugins/kickstart/mini.nix
     ./config/plugins/kickstart/treesitter.nix
-    ./config/plugins/custom/autocmd.nix
-    ./config/plugins/custom/markview.nix
-    ./config/plugins/custom/dap.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
     #  Here are some example plugins that I've included in the Kickstart repository.
     #  Uncomment any of the lines below to enable them (you will need to restart nvim).
     #
-    # ./config/plugins/kickstart/debug.nix
+    ./config/plugins/kickstart/debug.nix
     # ./config/plugins/kickstart/indent-blankline.nix
     # ./config/plugins/kickstart/lint.nix
     # ./config/plugins/kickstart/autopairs.nix
@@ -36,6 +33,10 @@ in
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./config/plugins/custom and import them below
+
+    ./config/plugins/custom/autocmd.nix
+    ./config/plugins/custom/markview.nix
+
   ];
 
   /*

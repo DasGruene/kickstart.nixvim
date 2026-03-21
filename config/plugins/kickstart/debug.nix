@@ -1,4 +1,11 @@
 {
+  pkgs,
+  ...
+}:
+let
+  lua_file = builtins.readFile ./debug.lua;
+in
+{
   # Shows how to use the DAP plugin to debug your code.
   #
   # Primarily focused on configuring the debugger for Go, but can
@@ -40,10 +47,9 @@
   };
 
   # Add your own debuggers here
-  plugins.dap-go = {
-    enable = true;
+  plugins = {
+    rustaceanvim.enable = true;
   };
-
   # https://nix-community.github.io/nixvim/keymaps/index.html
   keymaps = [
     # Basic debugging keymaps, feel free to change to your liking!
@@ -135,22 +141,22 @@
     }
   ];
 
-  # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfiglua
-  extraConfigLua = ''
-    -- Change breakpoint icons
-    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
-    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
-    -- local breakpoint_icons = vim.g.have_nerd_font
-    --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
-    --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
-    -- for type, icon in pairs(breakpoint_icons) do
-    --   local tp = 'Dap' .. type
-    --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
-    --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
-    -- end
+  environment.systemPackages = with pkgs; [
+    llvmPackages.lldb
+    gdb
+    probe-rs
+    # BEST option on Nix:
+    vscode-extensions.vadimcn.vscode-lldb.adapter
+  ];
 
-    require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
-    require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
-    require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
-  '';
+  # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfiglua
+  extraConfigLua =
+    builtins.replaceStrings
+      [ "@GDB_PATH@" "@VSCODE_LLDB_PATH@" "@LLDB_PATH@" ]
+      [
+        "${pkgs.gdb}/bin/gdb"
+        "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb"
+        "${pkgs.llvmPackages.lldb}/lib/liblldb.so"
+      ]
+      lua_file;
 }
