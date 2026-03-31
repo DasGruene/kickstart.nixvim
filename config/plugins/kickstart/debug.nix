@@ -48,8 +48,11 @@ in
 
   # Add your own debuggers here
   plugins = {
-    rustaceanvim.enable = true;
+    #rustaceanvim.enable = true;
   };
+  extraPlugins = with pkgs.vimPlugins; [
+    nvim-dap-cortex-debug
+  ];
   # https://nix-community.github.io/nixvim/keymaps/index.html
   keymaps = [
     # Basic debugging keymaps, feel free to change to your liking!
@@ -152,9 +155,8 @@ in
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfiglua
   extraConfigLua =
     builtins.replaceStrings
-      [ "@GDB_PATH@" "@VSCODE_LLDB_PATH@" "@LLDB_PATH@" ]
+      [ "@VSCODE_LLDB_PATH@" "@LLDB_PATH@" ]
       [
-        "${pkgs.gdb}/bin/gdb"
         "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb"
         "${pkgs.llvmPackages.lldb}/lib/liblldb.so"
       ]
