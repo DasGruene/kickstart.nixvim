@@ -86,7 +86,7 @@
         ];
       };
       nixd.enable = true;
-      pylsp.enable = true;
+      #pylsp.enable = true;
       zls.enable = true;
       rust_analyzer = {
         enable = true;

@@ -7,6 +7,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #nixvim.url = "github:DasGruene/nixvim/fix/blink-cpm_allow_lua_keymap";
     # stable older version for use when current version gets bad update
     #nixvim.url = "github:nix-community/nixvim/695b0b80f8452bc584adf23eb58bdc9f599e35eb";
     flake-parts.url = "github:hercules-ci/flake-parts";

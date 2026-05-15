@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   # `friendly-snippets` contains a variety of premade snippets
   #    See the README about individual language/framework/plugin snippets:
@@ -44,10 +45,12 @@
         #
         # See :h blink-cmp-config-keymap for defining your own keymap
         preset = "default";
-
+        "<Leader>y" = lib.nixvim.mkRaw "{ function(cmp) cmp.show { providers = { 'minuet' } } end, }";
         # For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         #    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       };
+
+      cmdline.completion.menu.auto_show = true;
 
       appearance = {
         # 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -62,6 +65,9 @@
           auto_show = true;
           auto_show_delay_ms = 500;
         };
+        trigger = {
+          prefetch_on_insert = false;
+        };
       };
 
       sources = {
@@ -70,11 +76,20 @@
           "path"
           "snippets"
           "lazydev"
+          "minuet"
         ];
         providers = {
           lazydev = {
             module = "lazydev.integrations.blink";
             score_offset = 100;
+          };
+
+          minuet = {
+            name = "minuet";
+            module = "minuet.blink";
+            async = true;
+            timeout_ms = 30000;
+            score_offset = 50;
           };
         };
       };
@@ -97,6 +112,7 @@
       # Shows a signature help window while you type arguments for a function
       signature = {
         enabled = true;
+
       };
     };
   };

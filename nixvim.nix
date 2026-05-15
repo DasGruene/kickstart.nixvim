@@ -9,6 +9,8 @@ let
 in
 {
   imports = [
+
+    ./config/plugins/custom/minuet.nix
     # Plugins
     ./config/plugins/kickstart/gitsigns.nix
     ./config/plugins/kickstart/which-key.nix
